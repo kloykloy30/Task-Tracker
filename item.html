@@ -1,0 +1,627 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Insert title here</title>
+<script type="text/javascript" src="js/jquery-1.6.4.js"></script>
+	<script type="text/javascript" src="js/mootools-core-1.4.5-full-nocompat.js"></script>
+	<script type="text/javascript" src="js/jquery.corner.js"></script>
+	<script type="text/javascript" src="js/jQueryRotate.2.1.js"></script>
+<style type="text/css">
+a:hover, a:link, a:visited, a:active {
+	color:white;
+	text-decoration:none;
+}
+body {
+	font-family: 'Ubuntu', sans-serif;
+}
+.subitems{
+	position:relative;
+	display:none;
+	/*top:100px;*/
+}
+.item {
+	position:relative;
+	width:100%;
+}
+.progressbar{
+	background-color:#e1e1e1; /*include background image*/
+	width:100%;
+	height:54px;
+	position:absolute;
+	top:0px;
+	z-index:4;
+}
+.moneybar{
+	background-color:#cccccc;
+	width:100%;
+	height:10px;
+	position:absolute;
+	bottom:0px;
+	z-index:5;
+}
+.bars {
+	position:relative;
+	height:63px;
+	width:100%;
+}
+.title, .title-edit input {
+	position:absolute;
+	top:10px;
+	font-size:30px;
+	font-weight: 400;
+	width:100%;
+	z-index:10;
+	left:15px;
+}
+.title-edit{
+	z-index:14;
+}
+.achieved {
+	height:100%;
+}
+
+.moneybar .achieved{
+	height:100%;
+	background-image:url('img/money-achieved.jpg');
+	background-repeat:repeat-x;
+}
+
+.progressbar .achieved {
+	background-color:grey;
+} 
+.dial {
+	position:relative;
+	float:left;
+	width:50px;
+	height:50px;
+	background-color:#ff0066;
+	border-top-left-radius: 25px;
+	border-top-right-radius: 25px;
+	border-bottom-left-radius: 25px;
+	border-bottom-right-radius: 25px;
+}
+
+.dial-cover {
+	position:absolute;
+	left:0px;
+	bottom:0px;
+	width:50px;
+	height:50px;
+	background-color:rgba(0,0,0,0);
+	z-index:3;
+}
+
+.dials-container {
+	position:relative; 
+	width:65px;
+	height:50px;
+	border-top-left-radius: 8px;
+	border-top-right-radius: 8px;
+	border-bottom-left-radius: 8px;
+	border-bottom-right-radius: 8px;
+	border: 2px solid #ff0066;
+	color:#ff0066;
+}
+
+.dial-value {
+	position:absolute;
+	left:10px;
+	bottom:17px;
+	font-weight:bold;
+	font-size:12px;
+	background-color:transparent;
+	width:30px;
+	text-align:center;
+	border:none;
+	color:#ffffff;
+	z-index:2;
+}
+
+.duration-units{
+	position:relative;
+	float:left;
+	top:2px;
+}
+
+.duration-units td{
+	background-color:#ff00ff;
+	padding:10px;
+	opacity:0.4;
+}
+
+.dial-img {
+	z-index:4;
+}
+.admin {
+	position:relative;
+	display:none;
+	height:100%;
+}
+.clearbutton{
+	color:white;
+	font-size:10px;
+	text-align:center;
+	position:absolute;
+	bottom:5px;
+	left:120px;
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+	border-bottom-left-radius: 5px;
+	border-bottom-right-radius: 5px;	
+	padding: 5px 10px 17px 10px;
+}
+.money {
+	position:relative;
+	float:left;
+	top:13px;
+}
+.money-title {
+	float:left;
+	padding:3px 5px;
+}
+.money-input {
+	float:left;
+	margin-left:5px;
+}
+.money-input input{
+	width:80px;
+}
+.money-clear{
+	float:left;
+	background-color:#ff00ff;
+	color:white;
+	font-size:10px;
+	text-align:center;
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+	border-bottom-left-radius: 5px;
+	border-bottom-right-radius: 5px;	
+	padding: 5px 10px;
+	margin-left:5px;
+}
+.duration-title{
+	float:left;
+	position:relative;
+	padding:15px 10px 0px 10px; 
+}
+.title-tooltip {
+	background-color:#ffee99;
+	color:black;
+	position:absolute;
+	top:-100px;
+	left:20px;
+	padding:5px 10px;
+	z-index:20;
+	border-top-left-radius: 9px;
+	border-top-right-radius: 9px;
+	border-bottom-left-radius: 9px;
+	border-bottom-right-radius: 9px;
+}
+.tooltip-svg {
+	position:absolute;
+}
+.title-edit{
+	position:absolute;
+	top:-66px;
+	left:-1px;
+}
+#filter-input, .tag-input, .title-input {
+	border:none;
+	background:transparent;
+	width:800px;
+}
+textarea:focus, input:focus{
+   	outline: none;
+}
+.sidebuttons {
+	vertical-align:bottom;
+}
+.sidebutton {
+	padding:10px;
+	margin:5px 0;
+	border-top-left-radius: 10px;
+	border-top-right-radius: 10px;
+	border-bottom-left-radius: 10px;
+	border-bottom-right-radius: 10px;
+	text-align:center;
+	color:white;
+}
+.sidebutton a:hover, .sidebutton a:visited, .sidebutton a:link, .sidebutton a:active {
+	color:white;
+}
+.clearbutton a:hover, .clearbutton a:visited, .clearbutton a:link, .clearbutton a:active {
+	color:white;
+}
+.openadmin {
+	position:absolute;
+	right:-45px;
+	top:0px;
+	margin-top:10px;
+	border-top-left-radius: 25px;
+	border-top-right-radius: 25px;
+	border-bottom-left-radius: 25px;
+	border-bottom-right-radius: 25px;
+}
+.additem {
+	position:absolute;
+	right:-90px;
+	top:0px;
+	margin-top:10px;
+	border-top-left-radius: 25px;
+	border-top-right-radius: 25px;
+	border-bottom-left-radius: 25px;
+	border-bottom-right-radius: 25px;
+}
+
+.openitems-add{
+	display:none;
+	opacity:0;
+}
+.bars-cover{
+	z-index:12;
+	position:absolute;
+	width:100%;
+	height:100%;
+	background-color:transparent;
+}
+</style>
+<script type="text/javascript">
+var indent = 100;
+$(function(){
+
+	setSubitemWidths($(".items .item"));
+	$(".dial-img").mousedown(startRotation);
+	$(".dial-cover").mousedown(startRotation);
+	$(".duration-units a").bind("click", onSelectUnit);
+	$(".background-hue").css("background-color", "red");
+	$(".openadmin").mousedown(openItemAdmin);
+	$(".additem").mousedown(addItem);
+	$(".bars-cover").mousedown(openSubItems);
+});
+var itemnum = 3;
+function addItem(event){
+	var itemId = $(event.target).closest(".item").attr("id").substring(1);
+	var projectId = $(event.target).closest(".project").attr("id").substring(1);
+	var item = $("#item-template .item").clone();
+	item.attr("id", "i" + (++itemnum));
+	setFunctions(item); 
+	console.log("subitems:"+$("#i"+itemId+" > .subitems").length);
+	$($("#i"+itemId+" .subitems")[0]).append(item);
+	setSubitemWidths($(".items .item"));
+}
+
+function setFunctions(item){
+	item.find(".dial-img").mousedown(startRotation);
+	item.find(".dial-cover").mousedown(startRotation);
+	item.find(".duration-units a").bind("click", onSelectUnit);
+	item.find(".background-hue").css("background-color", "red");
+	item.find(".openadmin").mousedown(openItemAdmin);
+	item.find(".additem").mousedown(addItem);
+	item.find(".bars-cover").mousedown(openSubItems);
+}
+
+function openSubItems(event){
+	var itemId = $(event.target).closest(".item").attr("id").substring(1);
+	var projectId = $(event.target).closest(".project").attr("id").substring(1);
+	var subitems = $("#i"+itemId+" > .item-body > .subitems-body > .subitems");
+	if (subitems.css("display")=="block"){ // items already expanded
+		subitems.css("display", "none");
+		$("#p"+projectId+" #i"+itemId+" .subitems-body").animate({height:0}, 200);
+	} else {
+		subitems.css("display", "block");
+		var goalHeight = subitems.height();
+		subitems.css("display", "none");
+		$("#i"+itemId+" > .item-body >.subitems-body").animate({height:goalHeight}, 200, function(){
+																								$(this).find("> .subitems").css("display", "block");
+																								$(this).css("height", "auto")});
+	}
+}
+
+function onSelectUnit(event){
+	//alert ($(event.target).closest(".project").attr("id"));
+	var item = $(event.target).closest(".item"); 
+	item.find(".duration-units td").css("opacity", 0.4);
+	$(event.target).closest("td").css("opacity", 1);
+}
+
+var currItemId;
+var currProjectId;
+var rot = 0;
+var unitvalue = 0;
+function startRotation(event){
+	$(window).mousemove(rotateDial);
+	rotatingDial = $(event.target).closest(".dial");
+	currItemId = $(event.target).closest(".item").attr("id").substring(1);
+	currProjectId = $(event.target).closest(".project").attr("id").substring(1);
+	oldRot = rot;
+	startVal = unitvalue;
+	event.preventDefault();
+	mouseStart = [event.pageX, event.pageY];
+	$(window).mouseup(stopRotateDial);
+}
+
+function openItemAdmin(event){
+	console.log("openitemadmin");
+	var itemId = $(event.target).closest(".item").attr("id").substring(1);
+	console.log("itemId:"+itemId);
+	//var projectId = $(event.target).closest(".project").attr("id").substring(1);
+	if ($("#i"+itemId+" .admin").css("display") == "block"){ // admin is open
+		$("#i"+itemId+" > .item-body .admin-container .admin").css("display", "none");
+		$("#i"+itemId+" > .bars .title").css("display", "block");
+		$("#i"+itemId+" > .item-body .admin-container").animate({height:0}, 200);
+		$("#i"+itemId+" > .bars .title").html($("#i"+itemId+" > .item-body > .admin-container .title-input").val());
+	} else { // admin is closed
+		if ($("#i"+itemId+" > .item-body > .subitems-body > .subitems").children().length > 0){
+			$("#i"+itemId+" > .item-body > .admin-container .endclass-item").css("display", "none");
+			$("#i"+itemId+" > .bars .title").css("display", "none");
+			$("#i"+itemId+" > .item-body > .admin-container .admin").css("display", "block");
+		} else {
+			$("#i"+itemId+" > .item-body .admin .endclass-item").css("display", "block");
+			$("#i"+itemId+" > .item-body > .admin-container").animate({height:60}, 200, function(){
+																			$(this).closest(".item").find("> .bars .title").css("display", "none");
+																			$(this).find(".admin").css("display", "block");});
+		}
+	}
+}
+
+function stopRotateDial(event){
+	$(window).unbind("mousemove");
+	rotStart = -rot;
+}
+function rotateDial(event){
+	rot += ((event.pageX - mouseStart[0]) + (mouseStart[1] - event.pageY)) * 0.5;
+	$("#p"+currProjectId+" #i"+currItemId+" .dial-img").rotate(rot);
+	mouseStart[0] = event.pageX;
+	mouseStart[1] = event.pageY;
+	console.log("eventShift:"+event.shiftKey);
+	setDialValue(event.shiftKey);
+}
+
+function makeUnselectable(node) {
+    if (node.nodeType == 1) {
+        node.unselectable = true;
+    }
+    var child = node.firstChild;
+    while (child) {
+        makeUnselectable(child);
+        child = child.nextSibling;
+    }
+}
+
+function setSubitemWidths(items){
+	for (var i = 0; i < items.length; i++){
+		var parentWidth = $(items[i]).width();
+		$(items[i]).find(".subitems").css("width", parentWidth - indent);
+		$(items[i]).find(".subitems").css("margin-left", indent);
+		setSubitemWidths($(items[i]).find(".subitems .item"));
+	}
+}
+
+
+
+var oldRot = 0;
+var startVal;
+var oldShift = false;
+function setDialValue(shiftKey){
+	if (oldShift != shiftKey){
+		startVal = unitvalue;
+		oldRot = rot;
+		oldShift = shiftKey;
+	}
+	unitvalue = startVal + ((parseInt((rot - oldRot)/ 15) / 4)) * ((shiftKey)?10:1);
+	if (unitvalue < 0) unitvalue = 0;
+	$("#p"+currProjectId+" #i"+currItemId+" .dial-value").html(unitvalue);
+}
+</script>
+</head>
+<body>
+<div class="project" id="p1">
+	<div style="width:1000px;" class="items">
+		<div class="item" id="i1">
+			<div class='bars'>
+				<div class="bars-cover"></div>
+				<div class='title'>title</div>
+				<div class='progressbar'>
+					<div class='achieved background-hue'></div>
+				</div>
+				<div class='moneybar'>
+					<div class='achieved'></div>
+				</div>
+			</div>
+			<div class='openadmin background-hue'>
+				<img src='img/settings.png'>
+			</div>
+			<div class='additem background-hue'>
+				<img src='img/add-graphic-small.png'>
+			</div>
+			<div class="item-body">
+				<div class="admin-container">
+					<div class="admin">
+						<div class='title-tooltip'>Click to edit title 
+							<div class='tooltip-svg'>
+								<svg version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' width='20px' height='20px' viewBox='0 0 20 20' style='stroke:none;fill:#fe9;'><polyline points='0, 0, 20, 0, 10, 20, 0, 0'/></svg>
+							</div>
+						</div>
+						<div class='title title-edit'><input type="text" name="title-input" class="title-input" value="Test Project 1"></div>
+						<div class="endclass-item">
+							<div class="duration-title">duration:</div>
+							<div id='dial-time' class='dial unselectable background-hue'>
+								<div class='dial-img'>
+									<img src='img/dial-nomark.png' />
+								</div>
+								<div class='dial-cover'></div>
+								<div class='dial-value unselectable'>1.25</div>
+							</div>
+							<div class="duration-units">
+								<table cellspacing="5" cellpadding="0">
+									<tr>
+										<td>
+											<a href="#">hours</a>
+										</td>
+										<td>
+											<a href="#">days</a>
+										</td>
+										<td>
+											<a href="#">weeks</a>
+										</td>
+										<td>
+											<a href="#">months</a>
+										</td>
+									</tr>
+								</table>
+							</div>
+							<div class="money">
+								<div class="money-title">cost:</div>
+								<div class="money-input"><input type="text"></div>
+								<div class="money-clear"><a href="#">clear</a></div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="subitems-body">
+					<div class="subitems">
+						<div class="item" id="i2">
+							<div class='bars'>
+								<div class="bars-cover"></div>
+								<div class='title'>title</div>
+								<div class='progressbar'>
+									<div class='achieved background-hue'></div>
+								</div>
+								<div class='moneybar'>
+									<div class='achieved'></div>
+								</div>
+							</div>
+							<div class='openadmin background-hue'>
+								<img src='img/settings.png'>
+							</div>
+							<div class='additem background-hue'>
+								<img src='img/add-graphic-small.png'>
+							</div>
+							<div class="item-body">
+								<div class="admin-container">
+									<div class="admin">
+										<div class='title-tooltip'>Click to edit title 
+											<div class='tooltip-svg'>
+												<svg version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' width='20px' height='20px' viewBox='0 0 20 20' style='stroke:none;fill:#fe9;'><polyline points='0, 0, 20, 0, 10, 20, 0, 0'/></svg>
+											</div>
+										</div>
+										<div class='title title-edit'><input type="text" name="title-input" class="title-input" value="Test Project 1"></div>
+										<div class="endclass-item">
+											<div class="duration-title">duration:</div>
+											<div id='dial-time' class='dial unselectable background-hue'>
+												<div class='dial-img'>
+													<img src='img/dial-nomark.png' />
+												</div>
+												<div class='dial-cover'></div>
+												<div class='dial-value unselectable'>1.25</div>
+											</div>
+											<div class="duration-units">
+												<table cellspacing="5" cellpadding="0">
+													<tr>
+														<td>
+															<a href="#">hours</a>
+														</td>
+														<td>
+															<a href="#">days</a>
+														</td>
+														<td>
+															<a href="#">weeks</a>
+														</td>
+														<td>
+															<a href="#">months</a>
+														</td>
+													</tr>
+												</table>
+											</div>
+											<div class="money">
+												<div class="money-title">cost:</div>
+												<div class="money-input"><input type="text"></div>
+												<div class="money-clear"><a href="#">clear</a></div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="subitems-body">
+									<div class="subitems">
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+</body>
+<div id="item-template" style="display:none;">
+	<div class="item">
+		<div class='bars'>
+			<div class="bars-cover"></div>
+			<div class='title'>title</div>
+			<div class='progressbar'>
+				<div class='achieved background-hue'></div>
+			</div>
+			<div class='moneybar'>
+				<div class='achieved'></div>
+			</div>
+		</div>
+		<div class='openadmin background-hue'>
+			<img src='img/settings.png'>
+		</div>
+		<div class='additem background-hue'>
+			<img src='img/add-graphic-small.png'>
+		</div>
+		<div class="item-body">
+			<div class="admin-container">
+				<div class="admin">
+					<div class='title-tooltip'>Click to edit title 
+						<div class='tooltip-svg'>
+							<svg version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' width='20px' height='20px' viewBox='0 0 20 20' style='stroke:none;fill:#fe9;'><polyline points='0, 0, 20, 0, 10, 20, 0, 0'/></svg>
+						</div>
+					</div>
+					<div class='title title-edit'><input type="text" name="title-input" class="title-input" value="Test Project 1"></div>
+					<div class="endclass-item">
+						<div class="duration-title">duration:</div>
+						<div id='dial-time' class='dial unselectable background-hue'>
+							<div class='dial-img'>
+								<img src='img/dial-nomark.png' />
+							</div>
+							<div class='dial-cover'></div>
+							<div class='dial-value unselectable'>1.25</div>
+						</div>
+						<div class="duration-units">
+							<table cellspacing="5" cellpadding="0">
+								<tr>
+									<td>
+										<a href="#">hours</a>
+									</td>
+									<td>
+										<a href="#">days</a>
+									</td>
+									<td>
+										<a href="#">weeks</a>
+									</td>
+									<td>
+										<a href="#">months</a>
+									</td>
+								</tr>
+							</table>
+						</div>
+						<div class="money">
+							<div class="money-title">cost:</div>
+							<div class="money-input"><input type="text"></div>
+							<div class="money-clear"><a href="#">clear</a></div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="subitems-body">
+				<div class="subitems">
+				</div>
+			</div>
+		</div>
+	</div>		
+</div>
+</html>

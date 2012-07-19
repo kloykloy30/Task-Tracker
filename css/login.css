@@ -1,0 +1,175 @@
+body {
+    background:#ffffff;
+    font:14px/22px Arial, Helvetica, Sans-serif;
+    margin:0 0 0 610px; padding:0px;
+}
+
+div#wrapper{
+    position:relative;
+    left:50%;
+    margin:10% 0 0 -610px;
+}
+div#right-wrapper{
+    width:225px;
+    float: left;
+}
+div#reglog{
+    float: left;
+    width:225px;
+    background:rgba(0, 255, 180, 0.15);
+    margin-right:9px;
+    margin-top:10px;
+    padding: 0px 15px 30px 15px;
+}
+div#logo{
+    float: left;
+    width:225px;
+    background:rgba(0, 255, 180, 0.1);
+    margin-right:9px;
+    padding: 15px 15px 15px 15px;
+}
+.svglogo{
+    fill: rgba(0, 255, 180, 1);
+}
+.box.login{
+    float: left;
+    width:358px;
+}
+
+.boxBody
+{
+    background:rgba(0, 255, 180, 1);
+    padding:5px 20px;
+    padding-bottom: 25px;
+    margin-bottom:10px;
+    /*height:165px;*/
+    width:303px;
+}
+
+.box footer{
+    background:rgba(0, 255, 180, 0.2);
+    margin-left:2px;
+    margin-bottom:50px;
+    width:303px;
+    padding:20px 20px;
+    overflow:hidden;
+}
+
+.box label{
+    display:block;
+    margin:10px 0 0 6px;
+}
+
+.box footer label{
+	float:left;
+	margin:4px 0 0;
+}
+
+.box footer{
+	vertical-align:sub;
+	*vertical-align:middle;
+	margin-right:10px;
+}
+
+.box input[type=text],
+.box input[type=password],
+.txtField,
+.cjComboBox{
+    border: none;
+    margin:3px 0 4px;
+    padding:8px 6px;
+    width:290px;
+    display:block;
+    font:14px/22px Arial, Helvetica, Sans-serif;
+}
+
+.fail{
+    color: rgba(255, 0, 0, 0.8);
+    background:rgba(255, 0, 0, 0.2);
+    border:1px solid rgba(255, 0, 0, 0.5);
+    padding:5px 20px;
+    margin-left: 2px;
+    width:300px;
+    text-align:center;
+    border-radius:10px;
+    margin-bottom: 10px;
+}
+.succes{
+    color: rgba(0, 200, 0, 1);
+    background:rgba(0, 255, 0, 0.2);
+    border:1px solid rgba(0, 255, 0, 0.5);
+    padding:5px 20px;
+    margin-left: 2px;
+    width:300px;
+    text-align:center;
+    border-radius:10px;
+    margin-bottom: 10px;
+}
+
+.box input[type=text]:focus,
+.box input[type=password]:focus,
+.txtField:focus,
+.cjComboBox:focus{
+    border: none;
+    outline: none;
+}
+
+.cjComboBox{
+    width:294px;
+}
+
+.cjComboBox.small{
+    padding:3px 2px 3px 6px;
+    width:100px;
+    border-width: none !important;
+}
+
+.rLink{padding:0 6px 0 0; font-size:11px; float:right;}
+.box a{color:#555555;}
+.box a:hover, .box a:focus{text-decoration:underline;}
+.box a:active{color:#f84747;}
+.btnLogin{
+    border-radius:35px;
+    background:rgba(0, 255, 150, 1);
+    border: none !important;
+    padding:11px 16px;
+    color:#ffffff;
+    margin-left:12px;
+    float:right;
+	padding:10px 40px;
+    font:14px/22px Arial, Helvetica, Sans-serif ;
+}
+.rightbut a{
+    border-radius:35px;
+    background:rgba(0, 255, 150, 1);
+    border: none !important;
+    padding:11px 16px;
+    color:#ffffff;
+    padding:10px 40px;
+    text-decoration:none;
+}
+.btnLogin:focus,
+.btnLogin:active,
+.rightbut a:active{
+    background:rgba(0, 255, 150, 0.5);
+}
+
+footer#main{
+	position:fixed;
+	left:0;
+	bottom:10px;
+	text-align:center;
+    width:100%;
+}
+
+fieldset{
+    border: none;
+    outline: none;
+}
+
+.submit{
+    float: right;
+}
+.rightbut{
+    float: right;
+}
