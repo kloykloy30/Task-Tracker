@@ -37,7 +37,6 @@
 	</div>
 	<div id="background-cover">
 	</div>
-	hello
 </body>
 
 <div id="project-template" style="display:none;">
