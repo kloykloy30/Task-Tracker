@@ -29,13 +29,12 @@ A:hover {text-decoration: none;}
 	position:relative;
 }
 
-.projecthead{
+.project-head{
 	position:relative;
 	width:100%;
 	height:64px;
 }
-.admin-container{
-}
+
 
 .countdown{
 	position:absolute;
@@ -53,12 +52,15 @@ A:hover {text-decoration: none;}
 }
 
 .countdown-number{
-	font-size:35;
+	font-size:35px;
 	font-weigth:400;
 	margin-top:5px;
+	position:relative;
+	z-index:3;
 }
 
 .countdown-string{
+	z-index:3;
 	font-size:10px;
 	position:relative;
 	top:-4px;
@@ -84,6 +86,10 @@ A:hover {text-decoration: none;}
 	position:absolute;
 	bottom:0px;
 	z-index:5;
+	
+}
+
+.item .moneybar{
 	opacity:0;
 }
 
@@ -114,51 +120,38 @@ A:hover {text-decoration: none;}
 	font-weight: 400;
 	top:5px;
 	z-index:10;
-}
-
-.title-edit{
-	position:absolute;
-}
-
-.title-edit input {
 	width:100%;
 }
 
-.openadmin {
-	position:absolute;
-	right:45px;
-	margin-top:10px;
-	border-top-left-radius: 25px;
-	border-top-right-radius: 25px;
-	border-bottom-left-radius: 25px;
-	border-bottom-right-radius: 25px;
-}
-.openitems {
-	position:absolute;
-	right:0px;
-	margin-top:10px;
-	border-top-left-radius: 25px;
-	border-top-right-radius: 25px;
-	border-bottom-left-radius: 25px;
-	border-bottom-right-radius: 25px;
+.title-edit {
+	left:16px;
+	position:relative;
 }
 
-.additem {
+.admin-button-bg {
 	position:absolute;
-	right:0px;
+	top:2px;
+	opacity:0.5;
+}
+
+.openadmin, .openitems, .additem , .edit-title-button{
+	height:40px;
+	position:absolute;
 	margin-top:10px;
 	border-top-left-radius: 25px;
 	border-top-right-radius: 25px;
 	border-bottom-left-radius: 25px;
 	border-bottom-right-radius: 25px;
 }
+.openadmin, .edit-title-button{ right:45px;}
+.openitems, .additem{ right:0px;}
 
 .openitems-add{
 	display:none;
 	opacity:0;
 }
 
-#filter-terms{
+#filter-terms, .terms{
 	float:left;
 	list-style-type:none;
 }
@@ -173,11 +166,13 @@ A:hover {text-decoration: none;}
 	width:800px;
 }
 
+.tags *{ float:left; }
+
 textarea:focus, input:focus{
    	outline: none;
 }
 
-#filter-terms .term, #filter-search, .term-search, .notes-title {
+#filter-terms .term, #filter-search, .term-search, .notes-title, #btn-logout{
 	background-color:#ddd;
 	border-top-left-radius: 5px;
 	border-top-right-radius: 5px;
@@ -190,7 +185,7 @@ textarea:focus, input:focus{
 	color:#fff;
 }
 
-.term {
+.term, .filter-title {
 	background-color:#fff;
 	border-top-left-radius: 5px;
 	border-top-right-radius: 5px;
@@ -201,21 +196,27 @@ textarea:focus, input:focus{
 	color:#666;
 }
 
-#filter-terms .search {
+#filter-terms .search, #btn-logout {
 	background-color:#8888ff;
 }
-.tag-terms {
-	position:relative;
-	top:10px;
-	-webkit-padding-start: 10px;
+
+#btn-logout{
+	width:100px;
+}
+
+.terms {
+	position: relative;
+	top: 0px;
+	-webkit-padding-start: 3px;
+	margin: 0px;
 }
 .project-body {
 	padding-top:10px;
 }
-
-.project-admin {
+.admin-container{
 	position:relative;
-	top:-15px;
+}
+.project-admin {	
 	/*top:-200px;*/
 	/*display:none;*/
 	/*opacity:0;*/
@@ -223,11 +224,11 @@ textarea:focus, input:focus{
 }
 .tags {
 	position:relative;
-	left:0px;
-	top:-5px;
-	height:42px;
-	width:866px;
-	margin:5px;
+	height:36px;
+	width:863px;
+	/*margin:5px;*/
+	margin: 0px 7px 10px 8px;
+	padding: 5px 0px 0px 2px;
 	background-image: linear-gradient(bottom, rgb(252, 214, 255) 10%, rgb(252, 187, 255) 50%);
 	background-image: -o-linear-gradient(bottom, rgb(252, 214, 255) 10%, rgb(252, 187, 255) 50%);
 	background-image: -moz-linear-gradient(bottom, rgb(252, 214, 255) 10%, rgb(252, 187, 255) 50%);
@@ -240,7 +241,7 @@ textarea:focus, input:focus{
 	top:-5px;
 	height:100%;
 	width:866px;
-	margin:5px 5px 0 5px;
+	margin:5px 5px 5px 5px;
 }
 .notes-title{
 	width:45px;
@@ -436,7 +437,7 @@ textarea:focus, input:focus{
 
 .side-bar {
 	position:relative;
-	margin:10px 0;
+	margin:0px 0;
 }
 
 .title-tooltip {
@@ -627,8 +628,13 @@ a:hover, a:link, a:visited, a:active {
 }
 .items {
 	width:816px;
-	margin-left:124px;
+	margin-left:40px;
 }
+
+.project-body > .items-container > .items {
+	margin-left:120px;
+}
+
 .items .bars {
 	position:relative;
 	height:63px;
@@ -688,10 +694,12 @@ a:hover, a:link, a:visited, a:active {
 .dial-img {
 	z-index:4;
 }
-.admin {
+.item-admin {
 	position:relative;
 	display:none;
-	
+}
+.admin-container{
+	opacity:0;
 }
 .admin-controls {
 	height:82px;
@@ -793,18 +801,21 @@ a:hover, a:link, a:visited, a:active {
 	opacity:0;
 }
 
-.items .title-edit{
+.items .title-edit, .project .title-edit{
 	width:100%;
 	z-index:14;
 	display:none;
-	top:2px;
+	top:4px;
 }
 
-.items .title-edit input{
-	left:-1;
+.items .title-edit input, .project .title-edit input{
+	left:-1px;
+	position:relative;
 }
 
 #filter-input, .tag-input, .title-input {
+	padding: 8px 0 5px 5px;
+	font-size: 16px;
 	border:none;
 	background:transparent;
 	width:800px;
@@ -832,7 +843,7 @@ textarea:focus, input:focus{
 .clearbutton a:hover, .clearbutton a:visited, .clearbutton a:link, .clearbutton a:active {
 	color:white;
 }
-.items .openadmin {
+.items .edit-title-button {
 	position:absolute;
 	right:-45px;
 	top:0px;
@@ -859,7 +870,7 @@ textarea:focus, input:focus{
 	display:none;
 	opacity:0;
 }
-.bars-cover{
+.bars-cover, .admin-button{
 	z-index:12;
 	position:absolute;
 	width:100%;
