@@ -84,7 +84,7 @@ define(function(){
 			this._hue			= parseInt(projectData["p_hue"]);
 			this._notes 		= projectData["p_notes"];
 			this._tags 			= projectData["tags"];
-			if (projectData["p_duedate"] != "NULL"){
+			if (projectData["p_duedate"] != null){
 				this._duedate 		= projectData["p_duedate"].split("-");
 			
 				for (var i = 0; i < this._duedate.length; i++){

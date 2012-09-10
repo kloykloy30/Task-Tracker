@@ -69,7 +69,7 @@ function onProjectLoad(dataStr){
 			}
 		});
 		
-		$("#add-project").bind("click", addProject);
+		$("#add-project").live("click", addProject);
 	}
 }
 

@@ -5,40 +5,38 @@
 <html>
     <head>
         <title>TaskTracker</title>
+
         <!-- This is a special version of jQuery with RequireJS built-in -->
-        <script type="text/javascript" src="scripts/jquery-1.6.4.js"></script>
-        
-         <script type="text/javascript" src="scripts/mootools-core-1.4.5-full-nocompat.js"></script>
+        <script data-main="scripts/main" src="scripts/require-jquery.js"></script>
+		<script type="text/javascript" src="scripts/mootools-core-1.4.5-full-nocompat.js"></script>
 		<script type="text/javascript" src="scripts/jquery.corner.js"></script>
 		<script type="text/javascript" src="scripts/moautocomplete.js"></script>
-        
-        <script type="text/javascript" src="scripts/tasktracker.js"></script>
-        <script data-main="scripts/main" src="scripts/require-jquery.js"></script>
-        <script type="text/javascript" src="scripts/jQueryRotate.2.1.js"></script>
+    	<script type="text/javascript" src="scripts/jQueryRotate.2.1.js"></script>
+    	
         <link href='http://fonts.googleapis.com/css?family=Ubuntu:300,400,500' rel='stylesheet' type='text/css'>
 		<link href='css/styles.css' rel='stylesheet' type='text/css'>
     </head>
     <body>
         <div id="content">
-<div>
-<div>
-	<div id="btn-logout"><a href="access/login-form.php">Log out <?php echo $_SESSION['SESS_FIRST_NAME'];?></a></div>
-	<ul id="filter-terms">
-		<li class="filter-title search"><a href="#" onclick="searchTerms()">filter:</a></li>
-		<li id="filter-li">
-			<input id="filter-input" type="text" name="months" autocomplete="array:tags">
-		</li>
-	</ul></div>
-	<div id="projects"></div>
-	<div id="add-project">
-		<a>
-			<img src="img/add-graphic.png">
-		</a>
-	</div> 
-	</div>
-	</div>
-	<div id="background-cover">
-	</div>
+			<ul id="filter-terms">
+				<li class="filter-title search"><a href="access/login-form.php">Log out</a></li>
+				<li class="filter-title search"><a href="#" onclick="searchTerms()">filter:</a></li>
+				<li id="filter-li">
+					<input id="filter-input" type="text" name="months" autocomplete="array:tags">
+				</li>
+			</ul>
+			<div id="projects"></div>
+			<div id="add-project">
+				<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="40px" height="40px" viewBox="5 5 40 40" enable-background="new 5 5 40 40" space="preserve" >
+					<g transform="translate(0, 5)" >
+						<path fill="#ffffff" d="M26.437,35.871c0,0.659-0.404,1.191-0.904,1.191h-0.189c-0.5,0-0.905-0.532-0.905-1.191V13.253c0-0.658,0.404-1.19,0.905-1.19h0.189c0.5,0,0.904,0.533,0.904,1.19V35.871z"></path>
+						<path fill="#ffffff" d="M37.969,24.659c0,0.512-0.533,0.924-1.193,0.924H14.1c-0.66,0-1.194-0.412-1.194-0.924v-0.193c0-0.511,0.534-0.924,1.194-0.924h22.675c0.66,0,1.193,0.413,1.193,0.924V24.659z"></path>
+					</g>
+				</svg>	
+			</div>
+		</div> <!-- close content -->
+		<div id="background-cover">
+		</div>
     </body>
 </html>
 
@@ -49,15 +47,14 @@
 				<div class='countdown-number'></div>
 				<div class='countdown-string'></div>
 				<div class='admin-button-bg'>
-				<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-	 width="65px" height="65px" viewBox="5 5 40 40" enable-background="new 5 5 40 40" xml:space="preserve">
-<path fill="#ffffff" d="M21.687,10.511l1.709,3.585l3.333,0.015l1.74-3.571l2.166,0.71l-0.74,3.897l2.688,1.955l3.522-1.873
-	l1.334,1.837l-2.908,2.722l1.016,3.15l3.958,0.54l-0.01,2.262l-3.963,0.506l-1.047,3.145l2.887,2.744l-1.351,1.823l-3.505-1.898
-	l-2.707,1.93l0.707,3.905l-2.174,0.689l-1.71-3.584l-3.331-0.016l-1.742,3.571l-2.167-0.707l0.741-3.899l-2.687-1.956l-3.522,1.873
-	l-1.332-1.837L15.5,29.31l-1.016-3.151l-3.957-0.539l0.01-2.265l3.963-0.506l1.044-3.143l-2.884-2.746l1.349-1.825l3.506,1.905
-	l2.707-1.933l-0.705-3.906L21.687,10.511l1.709,3.585 M33.127,23.311c-0.691-4.445-4.882-7.497-9.359-6.812
-	c-4.478,0.685-7.551,4.843-6.863,9.29c0.69,4.445,4.881,7.494,9.36,6.811C30.743,31.915,33.816,27.755,33.127,23.311z"/>
-</svg>
+				<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="65px" height="65px" viewBox="5 5 40 40" enable-background="new 5 5 40 40" xml:space="preserve">
+					<path fill="#ffffff" d="M21.687,10.511l1.709,3.585l3.333,0.015l1.74-3.571l2.166,0.71l-0.74,3.897l2.688,1.955l3.522-1.873
+						l1.334,1.837l-2.908,2.722l1.016,3.15l3.958,0.54l-0.01,2.262l-3.963,0.506l-1.047,3.145l2.887,2.744l-1.351,1.823l-3.505-1.898
+						l-2.707,1.93l0.707,3.905l-2.174,0.689l-1.71-3.584l-3.331-0.016l-1.742,3.571l-2.167-0.707l0.741-3.899l-2.687-1.956l-3.522,1.873
+						l-1.332-1.837L15.5,29.31l-1.016-3.151l-3.957-0.539l0.01-2.265l3.963-0.506l1.044-3.143l-2.884-2.746l1.349-1.825l3.506,1.905
+						l2.707-1.933l-0.705-3.906L21.687,10.511l1.709,3.585 M33.127,23.311c-0.691-4.445-4.882-7.497-9.359-6.812
+						c-4.478,0.685-7.551,4.843-6.863,9.29c0.69,4.445,4.881,7.494,9.36,6.811C30.743,31.915,33.816,27.755,33.127,23.311z"/>
+					</svg>
 				</div>
 			</div>
 			<div class='bars'>
@@ -72,19 +69,15 @@
 				</div>
 			</div>
 			<div class='edit-title-button background-hue'>
-				<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-	 width="40px" height="40px" viewBox="0 0 40 40" enable-background="new 0 0 40 40" xml:space="preserve">
-<path fill="#ffffff" d="M30.5,8.5v23h-15l-10-11v-1l10.084-11H30.5z M27.5,28.5l0.045-17.045L16.5,11.5l-7,8v1l7,8H27.5z"/>
-</svg>
+				<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="40px" height="40px" viewBox="0 0 40 40" enable-background="new 0 0 40 40" xml:space="preserve">
+					<path fill="#ffffff" d="M30.5,8.5v23h-15l-10-11v-1l10.084-11H30.5z M27.5,28.5l0.045-17.045L16.5,11.5l-7,8v1l7,8H27.5z"/>
+				</svg>
 			</div>
 			<div class='additem background-hue'>
-				<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-	 width="40px" height="40px" viewBox="5 5 40 40" enable-background="new 5 5 40 40" xml:space="preserve">
-<path fill="#ffffff" d="M26.437,35.871c0,0.659-0.404,1.191-0.904,1.191h-0.189c-0.5,0-0.905-0.532-0.905-1.191V13.253
-	c0-0.658,0.404-1.19,0.905-1.19h0.189c0.5,0,0.904,0.533,0.904,1.19V35.871z"/>
-<path fill="#ffffff" d="M37.969,24.659c0,0.512-0.533,0.924-1.193,0.924H14.1c-0.66,0-1.194-0.412-1.194-0.924v-0.193
-	c0-0.511,0.534-0.924,1.194-0.924h22.675c0.66,0,1.193,0.413,1.193,0.924V24.659z"/>
-</svg>
+				<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="40px" height="40px" viewBox="5 5 40 40" enable-background="new 5 5 40 40" xml:space="preserve">
+					<path fill="#ffffff" d="M26.437,35.871c0,0.659-0.404,1.191-0.904,1.191h-0.189c-0.5,0-0.905-0.532-0.905-1.191V13.253c0-0.658,0.404-1.19,0.905-1.19h0.189c0.5,0,0.904,0.533,0.904,1.19V35.871z"/>
+					<path fill="#ffffff" d="M37.969,24.659c0,0.512-0.533,0.924-1.193,0.924H14.1c-0.66,0-1.194-0.412-1.194-0.924v-0.193c0-0.511,0.534-0.924,1.194-0.924h22.675c0.66,0,1.193,0.413,1.193,0.924V24.659z"/>
+				</svg>
 			</div>
 		 </div> 
 	<div class='project-body'>
@@ -202,19 +195,15 @@
 				</div>
 			</div>
 			<div class='edit-title-button background-hue'>
-				<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-	 width="40px" height="40px" viewBox="0 0 40 40" enable-background="new 0 0 40 40" xml:space="preserve">
-<path fill="#ffffff" d="M30.5,8.5v23h-15l-10-11v-1l10.084-11H30.5z M27.5,28.5l0.045-17.045L16.5,11.5l-7,8v1l7,8H27.5z"/>
-</svg>
+				<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="40px" height="40px" viewBox="0 0 40 40" enable-background="new 0 0 40 40" xml:space="preserve">
+					<path fill="#ffffff" d="M30.5,8.5v23h-15l-10-11v-1l10.084-11H30.5z M27.5,28.5l0.045-17.045L16.5,11.5l-7,8v1l7,8H27.5z"/>
+				</svg>
 			</div>
 			<div class='additem background-hue'>
-				<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-	 width="40px" height="40px" viewBox="5 5 40 40" enable-background="new 5 5 40 40" xml:space="preserve">
-<path fill="#ffffff" d="M26.437,35.871c0,0.659-0.404,1.191-0.904,1.191h-0.189c-0.5,0-0.905-0.532-0.905-1.191V13.253
-	c0-0.658,0.404-1.19,0.905-1.19h0.189c0.5,0,0.904,0.533,0.904,1.19V35.871z"/>
-<path fill="#ffffff" d="M37.969,24.659c0,0.512-0.533,0.924-1.193,0.924H14.1c-0.66,0-1.194-0.412-1.194-0.924v-0.193
-	c0-0.511,0.534-0.924,1.194-0.924h22.675c0.66,0,1.193,0.413,1.193,0.924V24.659z"/>
-</svg>
+				<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="40px" height="40px" viewBox="5 5 40 40" enable-background="new 5 5 40 40" xml:space="preserve">
+					<path fill="#ffffff" d="M26.437,35.871c0,0.659-0.404,1.191-0.904,1.191h-0.189c-0.5,0-0.905-0.532-0.905-1.191V13.253c0-0.658,0.404-1.19,0.905-1.19h0.189c0.5,0,0.904,0.533,0.904,1.19V35.871z"/>
+					<path fill="#ffffff" d="M37.969,24.659c0,0.512-0.533,0.924-1.193,0.924H14.1c-0.66,0-1.194-0.412-1.194-0.924v-0.193c0-0.511,0.534-0.924,1.194-0.924h22.675c0.66,0,1.193,0.413,1.193,0.924V24.659z"/>
+				</svg>
 			</div>
 		</div>
 		<div class="item-body">
