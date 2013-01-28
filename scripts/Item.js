@@ -519,7 +519,8 @@ define(function(){
 		saveData.projectid 			= this._project._id;
 		saveData.cost 				= this._cost;
 		saveData.complete 			= (this._complete)?1:0;
-		saveData.linkid 			= (this._linkid != null)?this._linkid:"NULL";
+		//saveData.linkid 			= (this._linkid != null)?this._linkid:"NULL";
+		saveData.linkid 			= (this._linkid != null)?this._linkid:0;
 		saveData.cmd 				= "si";
 		
 		$.post("services.php", saveData, onSaveItem);
